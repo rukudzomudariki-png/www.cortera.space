@@ -149,3 +149,8 @@ Full-width band on `var(--bg)`, 1px `--line` top and bottom, height `72px`. Geis
 - Loop: SVG stroke-draw on scroll; vertical on mobile.
 - Global: canvas Fibonacci sphere ~2000 dots, drag-to-rotate, pause off-screen, reduced-motion static.
 - Quote: PullQuote centered; Closing: sand variant ClosingLine.
+
+## StickySequence & ProductShot (site-6 control-plane)
+- `<StickySequence steps={[{index,title,body,schematic}]} />`: desktop sticky left schematic with scrolling right text; stacked on mobile. Steps all present in DOM. Schematic may be ReactNode or function(active).
+- `<ProductShot src alt ... />`: renders nothing when src is undefined; wraps MediaFrame.
+- Schematic style: inline SVG, 1.5px strokes in --text at 80%, one gradient-stroked element each, structure only, generic labels. Draw-on via framer-motion pathLength; static under reduced motion.
