@@ -60,3 +60,5 @@ src/
 - `NEXT_PUBLIC_SITE_URL` (metadataBase; dev fallback http://localhost:3000)
 - `NEXT_PUBLIC_CONTACT_EMAIL` (optional footer)
 - `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_GITHUB_URL` (optional footer socials)
+- `NEXT_PUBLIC_HN_URL` (optional; Hacker News discussion link)
+- `NEXT_PUBLIC_SECURITY_EMAIL` (optional; security contact email)
