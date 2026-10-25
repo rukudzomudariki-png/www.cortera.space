@@ -137,3 +137,15 @@ Full-width band on `var(--bg)`, 1px `--line` top and bottom, height `72px`. Geis
 - Hide-on-scroll-down / show-on-scroll-up after first viewport on desktop; always visible on mobile.
 - Mega panel: 360px, `--surface`, hairline; hover intent 80ms; closes on mouse-leave, Escape, route change; keyboard accessible.
 - Footer: dark; oversized decorative CORTERA wordmark; gradient hairline above; 4 link columns; lockup inverted on dark; tagline + sentence; bottom bar year + conditional socials/email.
+
+## 11. Homepage sections (site-4-home-sections)
+- Section rhythm below capability strip: dark (mission) → dark (platform) → dark (physical-ai) → paper (control-plane) → dark (industries) → paper (loop) → dark (global) → paper (quote) → sand (closing).
+- Each section has an `id` for anchor links: mission, platform, physical-ai, control-plane, industries, loop, global, quote, closing.
+- Manifesto: scroll-linked word highlight (25%→100% opacity via useScroll/useTransform), clamp 28–56px, Geist Sans 500, max ~22ch.
+- Two pillars: 1px --line vertical divider, 48px padding, hover bg --surface + gradient hairline top (300ms).
+- Physical AI feature: logo-mark-dark.png right 60%, screen blend, radial mask, grain 4%, glow ≤12% 10s pulse.
+- Control plane feature: duotone-blue terminal MediaFrame; 3×2 capability grid separated by hairlines.
+- Industries: 4/5 (4/3 mobile) panels; mining hero-mine.jpg; agriculture ContourBackdrop on --surface.
+- Loop: SVG stroke-draw on scroll; vertical on mobile.
+- Global: canvas Fibonacci sphere ~2000 dots, drag-to-rotate, pause off-screen, reduced-motion static.
+- Quote: PullQuote centered; Closing: sand variant ClosingLine.
