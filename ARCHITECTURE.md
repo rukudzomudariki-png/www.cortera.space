@@ -66,3 +66,9 @@ src/
 - `src/config/contact.ts` exports `CONTACT_EMAIL = "team@cortera.space"` and `buildMailto({ subject, body })`. No backend, no forms, no email provider.
 - `src/components/ui/CopyEmailButton.tsx` client component for clipboard copy with fallback.
 - `npm run check:no-forms` guards against `<form>` or contact-endpoint fetch/XHR in `src`.
+
+## Content system (site-9b-news)
+- Articles are MDX in `/content/announcements/*.mdx` and `/content/blog/*.mdx`, parsed at build time.
+- `src/lib/content.ts`: gray-matter frontmatter, zod validation, reading time, sorting, hasBlogPosts().
+- Routes: /announcements, /announcements/[slug], /announcements/rss.xml, /blog, /blog/[slug], /blog/rss.xml.
+- Blog link auto-hidden in footer when no non-draft blog entries (hasBlogPosts()).

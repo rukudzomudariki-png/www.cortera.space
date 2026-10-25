@@ -38,6 +38,7 @@ const CENTER_LINKS = [
   { label: "Industries", href: "/industries/mining", mega: true },
   { label: "Safety", href: "/safety" },
   { label: "Research", href: "/research" },
+  { label: "News", href: "/announcements" },
   { label: "Company", href: "/company" },
 ];
 
@@ -110,7 +111,10 @@ export function Nav() {
     setMegaOpen(false);
   };
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const isActive = (href: string) => {
+    if (href === "/announcements") return pathname.startsWith("/announcements") || pathname.startsWith("/blog");
+    return pathname === href || pathname.startsWith(href + "/");
+  };
 
   const handleMegaKey = (e: React.KeyboardEvent, idx: number) => {
     if (e.key === "ArrowDown" || e.key === "ArrowRight") {
@@ -295,6 +299,7 @@ export function Nav() {
                 { label: "Control Plane", href: "/control-plane" },
                 { label: "Safety", href: "/safety" },
                 { label: "Research", href: "/research" },
+                { label: "News", href: "/announcements" },
                 { label: "Company", href: "/company" },
               ].map((l, i) => (
                 <motion.div

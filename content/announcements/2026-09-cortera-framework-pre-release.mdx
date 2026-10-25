@@ -1,0 +1,37 @@
+---
+title: "Cortera Framework is now available in pre-release"
+date: "2026-09"
+category: "Release"
+excerpt: "A framework for building applications that agents can safely use, with permissions, blast radius and containment built in. Now on GitHub."
+coverStyle: "blast-radius"
+author: "Cortera"
+draft: false
+---
+
+Today we are making the Cortera Framework available in pre-release on GitHub.
+
+## What it is
+
+The Cortera Framework is a framework for building applications that agents can safely use. Every capability is defined as an Action, with its permissions, scope and audit trail built in. Each Action declares its blast radius: the downstream actions it is allowed to reach. An actor that exceeds that boundary is automatically contained until a person reviews it.
+
+## What is in the pre-release
+
+- Actions as the single primitive, defined once and exposed on many surfaces
+- Permissions, blast radius and automatic containment
+- Risk modes, provenance tracking and behavioral drift detection
+- An MCP server that exposes Actions as tools
+- A standalone guard service for action execution, approvals, containment review and observability
+
+## Get started
+
+<CodeBlock>npm install @cortera/core</CodeBlock>
+
+The framework is published as @cortera/* packages. The repository and release notes are on GitHub. <RepoLink>View the repository</RepoLink> and, when set, <HNLink>Join the discussion on Hacker News</HNLink>.
+
+## Known gaps
+
+<Callout>This is a pre-release. The release notes list known gaps, including test coverage still to be added for some packages. We would rather tell you what is unfinished than have you find out.</Callout>
+
+## What comes next
+
+Our research continues on Teralis, a ground-up rebuild of the security core, and on CorMCP, a standalone tool for the token cost of MCP. Both are in development. You can read about all three on our [Research page](/research).
