@@ -149,3 +149,10 @@ Full-width band on `var(--bg)`, 1px `--line` top and bottom, height `72px`. Geis
 - Loop: SVG stroke-draw on scroll; vertical on mobile.
 - Global: canvas Fibonacci sphere ~2000 dots, drag-to-rotate, pause off-screen, reduced-motion static.
 - Quote: PullQuote centered; Closing: sand variant ClosingLine.
+
+## 12. Industry pages (site-7-industries)
+- Shared template `<IndustryPage content={...} />` in `src/components/IndustryPage.tsx`, fed by typed content files `src/content/industries/{slug}.ts` conforming to `IndustryContent` in `src/content/industries/types.ts`.
+- Content schema: slug, title, description, canonical, eyebrow, h1 (one `*accent*`), lede, conditions{h2,lede,items[5]}, build{h2,blocks[{icon,title,body}] x3}, closing{h2,lede}, otherIndustry{label,href,description}.
+- Header: dark, height clamp(560px,80vh,820px); mining uses hero-mine.jpg right 70% with mask/edge fades/brightness 0.8/grain; agriculture uses ContourBackdrop right 70% with drift (AGRICULTURE_IMAGE when defined).
+- Sections: conditions (paper), what-we-build (dark, id), oversight (paper, id), approach (dark, id), connected (paper), closing (dark).
+- /industries index uses PageHeader + homepage Industries panels + closing block.

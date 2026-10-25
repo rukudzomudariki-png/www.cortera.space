@@ -9,9 +9,10 @@ export type SectionProps = PropsWithChildren<{
   hairline?: boolean;
   className?: string;
   id?: string;
+  style?: React.CSSProperties;
 }>;
 
-export function Section({ children, variant = "dark", hairline, className, id }: SectionProps) {
+export function Section({ children, variant = "dark", hairline, className, id, style }: SectionProps) {
   const base =
     variant === "paper"
       ? "bg-paper text-ink border border-paper-line"
@@ -21,6 +22,7 @@ export function Section({ children, variant = "dark", hairline, className, id }:
   return (
     <section
       id={id}
+      style={style}
       className={`relative ${base} ${hairline ? "border-t border-line" : ""} ${className ?? ""}`}
     >
       {children}
