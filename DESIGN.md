@@ -97,3 +97,9 @@ All images via `next/image` with explicit sizes, alt text, blur placeholders; he
 
 ## 8. Known asset issue
 `logo-lockup-light.png` (source `22094.png`) was not included with the uploaded assets, so no raster lockup file exists yet. The `Logo lockup` variant references `/assets/logo-lockup-light.png` and will 404 until the file is added. `logo-mark-dark.png` should eventually be replaced with a transparent vector SVG.
+
+## 9. Global navigation & footer (site-2-shell)
+- Fixed top bar: 72px desktop / 64px mobile. Transparent over hero; after 24px scroll `--bg` at 72% opacity + backdrop blur + 1px `--line` bottom border (only glass). 250ms transition.
+- Hide-on-scroll-down / show-on-scroll-up after first viewport on desktop; always visible on mobile.
+- Mega panel: 360px, `--surface`, hairline; hover intent 80ms; closes on mouse-leave, Escape, route change; keyboard accessible.
+- Footer: dark; oversized decorative CORTERA wordmark; gradient hairline above; 4 link columns; lockup inverted on dark; tagline + sentence; bottom bar year + conditional socials/email.

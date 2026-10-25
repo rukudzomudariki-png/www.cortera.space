@@ -40,3 +40,23 @@ src/
 - `tsc` (via `next build`)
 - `npm run lint` (eslint)
 - `npm run build` (next build)
+
+## Routes (site-2-shell)
+- `/` Home
+- `/physical-ai`
+- `/control-plane`
+- `/industries/mining`
+- `/industries/agriculture`
+- `/safety`
+- `/research`
+- `/company`
+- `/contact`
+- `/privacy` (title only; needs legal text)
+- `/terms` (title only; needs legal text)
+- not-found: "Off the map."
+
+## Environment variables
+- `NEXT_PUBLIC_APP_URL` (optional; enables Sign in link)
+- `NEXT_PUBLIC_SITE_URL` (metadataBase; dev fallback http://localhost:3000)
+- `NEXT_PUBLIC_CONTACT_EMAIL` (optional footer)
+- `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_GITHUB_URL` (optional footer socials)
