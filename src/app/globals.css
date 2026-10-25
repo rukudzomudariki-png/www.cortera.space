@@ -169,6 +169,28 @@ a { color: inherit; text-decoration: none; }
   background: #1f2a3a; /* placeholder tint base; tint applied via mix-blend on wrapper */
 }
 
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-marquee:hover,
+.animate-marquee:focus {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar while keeping scrollability */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

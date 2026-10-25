@@ -65,18 +65,22 @@ Used ONLY for hairlines, thin strokes, small glows, and one hero accent. Never l
 | Required name | Source file | Role |
 |---|---|---|
 | `logo-mark-dark.png` | `22706.png` (robot dome artwork) | Logo mark |
-| `hero-mine.jpg` | `21926.jpg` (haul trucks in tunnel) | Hero image |
+| `hero-robot.jpg` | `22018.jpg` (tracked robot, twin-lamp sensor arm, mine tunnel) | Hero image — atmospheric only, low resolution (~720px wide), replace with 2400px original |
+| `hero-mine.jpg` | `21926.jpg` (haul trucks in tunnel) | Mining panel (reserved, NOT the hero) |
 | `control-terminal.jpg` | `21375.jpg` | Terminal photo |
 | `logo-lockup-light.png` | `22094.png` | Logo lockup (NOT provided — see summary) |
 | `og-twitter.jpg` | composite of `hero-mine.jpg` + scrim + lockup | OG/Twitter (placeholder copy pending composite) |
 
 Copy uploaded files to `/public/assets` with these names; never edit or recompress beyond `next/image` defaults.
+If any file still carries an old name (`hero-dome.png`, `mine-haul-trucks.jpg`), rename it per this table and fix every reference.
+
+Define the hero image path once as a constant `HERO_IMAGE = "/assets/hero-robot.jpg"` in `src/config/assets.ts` and import it everywhere so it can be swapped in one line.
 
 ### Logo blend-mode recipe
 - **Mark** (`logo-mark-dark.png`): `mix-blend-mode: screen` + `filter: brightness(1.1) contrast(1.2)`. Renders the near-black texture into `var(--bg)` with no visible rectangle. Raise contrast until any faint box vanishes without clipping gradient colors.
 - **Lockup on dark** (`logo-lockup-light.png`): `filter: invert(1)` + `mix-blend-mode: screen`.
 - **Lockup on paper**: same file untouched, `mix-blend-mode: multiply`.
-- Wrap in `<Logo variant="mark\|lockup" />`. TODO: swap raster for vector SVG later. `logo-mark-dark.png` must eventually be replaced by a transparent SVG.
+- Wrap in `<Logo variant="mark|lockup" />`. TODO: swap raster for vector SVG later. `logo-mark-dark.png` must eventually be replaced by a transparent SVG.
 
 ### Image treatments (CSS utilities)
 - `.scrim-bottom` — bottom-to-top dark gradient
@@ -86,19 +90,49 @@ Copy uploaded files to `/public/assets` with these names; never edit or recompre
 
 All images via `next/image` with explicit sizes, alt text, blur placeholders; hero image `priority`.
 
-## 6. Content rules
+### Hero rules (site-3-hero)
+
+**Section:** dark variant, `height: 100svh`, `min-height: 720px`, `position: relative`, `overflow: hidden`, background `var(--bg)`.
+
+**Image layer (desktop >=1024px):** absolutely positioned container on the right, `top: 0`, `bottom: 0`, `width: 78vw`. Inside, `next/image` `fill`, `priority`, `object-fit: cover`, `object-position: 50% 50%` so the robot lands around 60–65% of viewport width. Treatment: `brightness(0.85) saturate(0.9)`. CSS mask (linear gradients) dissolves the left, top and bottom edges into `var(--bg)` so no rectangle is ever visible. A left-to-right overlay runs from `var(--bg)` at the container's left edge to transparent at 45% of the container. Top scrim under the nav and a bottom scrim are applied.
+
+**Glow:** faint radial glow, signature-gradient blue `#3B82F6` at max 10% opacity, centered on the robot's lamps (~50% x, ~33% y of the image), slow 10s pulse between 0.07 and 0.10. `aria-hidden`.
+
+**Grain:** `.grain` utility at 4% over the whole hero. `aria-hidden`.
+
+**Text block:** bottom-left, aligned to the container grid, columns 1–7, bottom padding `clamp(120px, 14vh, 180px)`.
+1. Eyebrow (Geist Mono): "PHYSICAL AI FOR MINING & AGRICULTURE", preceded by a 24px gradient hairline.
+2. Display headline, three lines max: "Frontier AI, built for the *physical* world." "physical" is Instrument Serif italic; the rest Geist Sans 600. Display scale `clamp(56px–136px)`, line-height `1.02`, tracking `-0.035em`, color `var(--text)`.
+3. Lede (max 56ch, `--muted`, 19px): exact copy (see page source).
+4. Two buttons, 16px gap: primary "Request a demo" → `/contact`; secondary (outlined) "Explore Physical AI" → `/physical-ai` with arrow icon.
+
+**Top-right (desktop only):** Geist Mono 11px, `--muted`, right-aligned, two lines under the nav: "FRONTIER PHYSICAL AND CLOUD AI / BUILT FOR THE GLOBE".
+
+**Bottom-center scroll cue:** 1px × 40px vertical line with a gradient dot traveling down it (2.4s loop) and the label "SCROLL" in Geist Mono 10px. Static line only under reduced motion.
+
+**Mobile (<1024px):** image block first, full width, height `52svh`, `object-position 50% 50%`, same mask/fade treatment (bottom and sides dissolve); text block below with 24px side padding; headline clamps to 44–56px; buttons stack full width below 480px; no clipped text at 320px; the hero may exceed `100svh`.
+
+**Motion:** image fades in 1200ms; eyebrow, headline (word by word, 60ms stagger, 12px rise), lede, buttons follow at 100ms offsets; total under 1.6s, once only. Pointer parallax on the image on desktop, max 12px, disabled on touch and under reduced motion. No video, no autoplay audio, no scroll-jacking.
+
+**Accessibility:** exactly one `h1` (the headline). Image alt: "Tracked robot with a twin-lamp sensor arm in an underground mine tunnel". Glow and grain `aria-hidden`. Text contrast AA over every part of the image on every viewport.
+
+## 6. Capability strip
+
+Full-width band on `var(--bg)`, 1px `--line` top and bottom, height `72px`. Geist Mono 12px uppercase, tracking `0.14em`, `--muted`. Items separated by 4px gradient dots: Permissions, Guardrails, Monitoring, Cost visibility, Failure analysis, Human oversight. Desktop: evenly spaced, static. Mobile: infinite horizontal marquee (30s linear, pauses on hover/focus; static and horizontally scrollable under reduced motion). Duplicate the track for seamless looping and mark the duplicate `aria-hidden`.
+
+## 7. Content rules
 - No fake customer logos, statistics, testimonials, awards, press mentions, revenue figures, lorem ipsum, or placeholder data.
 - Claims only about: Physical AI robotics for mining & agriculture; control plane for cloud & physical agents; safety, security, human oversight.
 - Tone: precise, confident, plain English. No hype words ("revolutionary", "game-changing").
 
-## 7. Routes
+## 8. Routes
 - `/` — Home: Logo + one Display line (placeholder), plus built sections (Hero, Control plane, Physical AI feature, PullQuote, Industries, ClosingLine sand).
 - `/design` — Dev-only design system reference: every primitive in all variants on dark/paper/sand backgrounds, token swatches, type scale.
 
-## 8. Known asset issue
+## 9. Known asset issue
 `logo-lockup-light.png` (source `22094.png`) was not included with the uploaded assets, so no raster lockup file exists yet. The `Logo lockup` variant references `/assets/logo-lockup-light.png` and will 404 until the file is added. `logo-mark-dark.png` should eventually be replaced with a transparent vector SVG.
 
-## 9. Global navigation & footer (site-2-shell)
+## 10. Global navigation & footer (site-2-shell)
 - Fixed top bar: 72px desktop / 64px mobile. Transparent over hero; after 24px scroll `--bg` at 72% opacity + backdrop blur + 1px `--line` bottom border (only glass). 250ms transition.
 - Hide-on-scroll-down / show-on-scroll-up after first viewport on desktop; always visible on mobile.
 - Mega panel: 360px, `--surface`, hairline; hover intent 80ms; closes on mouse-leave, Escape, route change; keyboard accessible.
