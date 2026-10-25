@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0A0A0B" />
+  <image
+    href="/assets/logo-mark-dark.png"
+    x="62"
+    y="62"
+    width="388"
+    height="388"
+    style="mix-blend-mode: screen; filter: brightness(1.1) contrast(1.2);"
+  />
+</svg>
