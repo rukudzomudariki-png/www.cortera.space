@@ -5,9 +5,10 @@ import { PropsWithChildren } from "react";
 export type ContourBackdropProps = PropsWithChildren<{
   className?: string;
   opacity?: number;
+  drift?: boolean;
 }>;
 
-export function ContourBackdrop({ className, opacity = 0.35 }: ContourBackdropProps) {
+export function ContourBackdrop({ className, opacity = 0.35, drift = false }: ContourBackdropProps) {
   const paths = [
     "M 80 300 C 200 120, 600 120, 720 300 C 600 480, 200 480, 80 300 Z",
     "M 120 300 C 220 160, 580 160, 680 300 C 580 440, 220 440, 120 300 Z",
@@ -45,9 +46,21 @@ export function ContourBackdrop({ className, opacity = 0.35 }: ContourBackdropPr
             stroke={i === 2 ? "url(#contour-grad)" : "var(--text)"}
             strokeWidth={i === 2 ? 1.5 : 1}
             strokeOpacity={i === 2 ? 1 : 0.14}
+            style={
+              drift && i === 2
+                ? {
+                    strokeDasharray: "200 1000",
+                    strokeDashoffset: 0,
+                    animation: "contour-drift 40s linear infinite",
+                  }
+                : undefined
+            }
           />
         ))}
       </svg>
+      {drift ? (
+        <style>{`@keyframes contour-drift { to { stroke-dashoffset: -1200; } } @media (prefers-reduced-motion: reduce) { path { animation: none !important; } }`}</style>
+      ) : null}
     </div>
   );
 }
