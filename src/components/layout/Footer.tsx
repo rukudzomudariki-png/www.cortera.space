@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
+import { CONTACT_EMAIL } from "@/config/contact";
 
 const columns = [
   {
@@ -44,7 +45,6 @@ export function Footer() {
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL;
   const x = process.env.NEXT_PUBLIC_X_URL;
   const github = process.env.NEXT_PUBLIC_GITHUB_URL;
-  const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
 
   return (
     <footer className="bg-surface border-t border-line">
@@ -75,6 +75,7 @@ export function Footer() {
             <p className="text-muted max-w-[40ch]">
               Frontier Physical and cloud AI, with the controls to run it safely.
             </p>
+            <a href={"mailto:" + CONTACT_EMAIL} className="text-text hover:text-muted transition-colors">{CONTACT_EMAIL}</a>
           </div>
           {columns.map((col) => (
             <div key={col.heading}>
@@ -112,7 +113,7 @@ export function Footer() {
                 GitHub
               </a>
             ) : null}
-            {email ? <span>{email}</span> : null}
+            <a href={"mailto:" + CONTACT_EMAIL} className="hover:text-text transition-colors">{CONTACT_EMAIL}</a>
           </div>
         </div>
       </Container>

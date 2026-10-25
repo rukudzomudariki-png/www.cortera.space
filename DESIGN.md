@@ -161,3 +161,7 @@ Full-width band on `var(--bg)`, 1px `--line` top and bottom, height `72px`. Geis
 - StatusChip: Geist Mono 11px uppercase pill, 1px --line border; "Pre-release" has gradient dot; "In development" hollow dot.
 - ProgramRow: full-width row (index, name, StatusChip, explanation, capability list, optional actions, schematic on right; schematic stacks above text on mobile), hairline separated, no cards.
 - CodeBlock: Geist Mono, --surface background, hairline border, copy button with aria-live "Copied".
+
+## 14. Contact page (site-9)
+- Topic rows: hairline-separated full-row mailto links, Geist Mono index, title, description, Mail icon + arrow (4px hover translate). No cards.
+- CopyEmailButton: clipboard with fallback; "Copied" 2s in aria-live polite.

@@ -58,7 +58,11 @@ src/
 ## Environment variables
 - `NEXT_PUBLIC_APP_URL` (optional; enables Sign in link)
 - `NEXT_PUBLIC_SITE_URL` (metadataBase; dev fallback http://localhost:3000)
-- `NEXT_PUBLIC_CONTACT_EMAIL` (optional footer)
 - `NEXT_PUBLIC_LINKEDIN_URL`, `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_GITHUB_URL` (optional footer socials)
 - `NEXT_PUBLIC_HN_URL` (optional; Hacker News discussion link)
 - `NEXT_PUBLIC_SECURITY_EMAIL` (optional; security contact email)
+
+## Contact (site-9)
+- `src/config/contact.ts` exports `CONTACT_EMAIL = "team@cortera.space"` and `buildMailto({ subject, body })`. No backend, no forms, no email provider.
+- `src/components/ui/CopyEmailButton.tsx` client component for clipboard copy with fallback.
+- `npm run check:no-forms` guards against `<form>` or contact-endpoint fetch/XHR in `src`.
