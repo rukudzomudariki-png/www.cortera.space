@@ -156,3 +156,8 @@ Full-width band on `var(--bg)`, 1px `--line` top and bottom, height `72px`. Geis
 - Header: dark, height clamp(560px,80vh,820px); mining uses hero-mine.jpg right 70% with mask/edge fades/brightness 0.8/grain; agriculture uses ContourBackdrop right 70% with drift (AGRICULTURE_IMAGE when defined).
 - Sections: conditions (paper), what-we-build (dark, id), oversight (paper, id), approach (dark, id), connected (paper), closing (dark).
 - /industries index uses PageHeader + homepage Industries panels + closing block.
+
+## 13. Site-8 components
+- StatusChip: Geist Mono 11px uppercase pill, 1px --line border; "Pre-release" has gradient dot; "In development" hollow dot.
+- ProgramRow: full-width row (index, name, StatusChip, explanation, capability list, optional actions, schematic on right; schematic stacks above text on mobile), hairline separated, no cards.
+- CodeBlock: Geist Mono, --surface background, hairline border, copy button with aria-live "Copied".

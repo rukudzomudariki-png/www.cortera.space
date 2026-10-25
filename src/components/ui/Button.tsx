@@ -1,6 +1,6 @@
 "use strict";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { PropsWithChildren } from "react";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost";
@@ -14,6 +14,7 @@ export type ButtonProps = PropsWithChildren<{
   className?: string;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
+  external?: boolean;
 }>;
 
 const sizes: Record<string, string> = {
@@ -32,6 +33,7 @@ export function Button({
   className,
   disabled = false,
   type = "button",
+  external = false,
 }: ButtonProps) {
   const base = "inline-flex items-center justify-center font-sans font-semibold rounded-full border-transparent select-none transition-colors duration-200";
   const styles: Record<string, string> = {
@@ -42,12 +44,14 @@ export function Button({
   const Comp = href ? "a" : "button";
   return (
     <Comp
-      {...(href ? { href } : { onClick, type })}
+      {...(href ? { href, ...(external ? { target: "_blank", rel: "noopener noreferrer" } : {}) } : { onClick, type })}
       disabled={disabled}
       className={`${base} ${styles[variant]} ${sizes[size]} ${className ?? ""}`}
     >
       {children}
       {arrow && <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />}
+      {external && <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />}
+      {external && <span className="sr-only">(opens in a new tab)</span>}
     </Comp>
   );
 }
