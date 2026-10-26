@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { hasBlogPosts } from "@/lib/content";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
@@ -67,7 +68,7 @@ export default function RootLayout({
         <main id="content" className="flex-1">
           <PageTransition>{children}</PageTransition>
         </main>
-        <Footer />
+        <Footer hasBlogPosts={hasBlogPosts()} />
       </body>
     </html>
   );

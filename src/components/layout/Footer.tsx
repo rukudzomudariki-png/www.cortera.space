@@ -27,6 +27,7 @@ const columns = [
       { label: "Company", href: "/company" },
       { label: "Research", href: "/research" },
       { label: "Safety", href: "/safety" },
+      { label: "Announcements", href: "/announcements" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -39,8 +40,9 @@ const columns = [
   },
 ];
 
-export function Footer() {
+export function Footer({ hasBlogPosts = false }: { hasBlogPosts?: boolean }) {
   const [year, setYear] = useState<number | null>(null);
+  const footerColumns = columns.map((c) => c.heading === "Company" ? { ...c, links: [...c.links.slice(0,4), ...(hasBlogPosts ? [{ label: "Blog", href: "/blog" }] : []), c.links[4]] } : c);
   useEffect(() => { const t = setTimeout(() => setYear(new Date().getFullYear()), 0); return () => clearTimeout(t); }, []);
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL;
   const x = process.env.NEXT_PUBLIC_X_URL;
@@ -77,7 +79,7 @@ export function Footer() {
             </p>
             <a href={"mailto:" + CONTACT_EMAIL} className="text-text hover:text-muted transition-colors">{CONTACT_EMAIL}</a>
           </div>
-          {columns.map((col) => (
+          {footerColumns.map((col) => (
             <div key={col.heading}>
               <p className="font-mono text-[var(--font-size-label)] uppercase tracking-[var(--letter-spacing-wide)] text-muted mb-4">
                 {col.heading}

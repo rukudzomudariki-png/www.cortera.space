@@ -15,11 +15,34 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ClosingLine } from "@/components/ui/ClosingLine";
 import { Lede } from "@/components/ui/Lede";
 import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Display } from "@/components/ui/Display";
+import { PostCard } from "@/components/news/PostCard";
+import { getAllPosts } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Cortera — Physical AI for Mining & Agriculture",
   description: "Cortera builds intelligent robotic systems for mining and agriculture, and the control plane that keeps every agent, in the cloud or on the ground, safe, observable and under human oversight.",
 };
+
+function LatestStrip() {
+  const posts = getAllPosts("announcements").slice(0, 3);
+  if (posts.length === 0) return null;
+  return (
+    <Section variant="paper" id="latest">
+      <Container className="py-[var(--section-padding)]">
+        <Eyebrow>LATEST</Eyebrow>
+        <Display level={2}>What we&apos;re *shipping*.</Display>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {posts.map((p) => <PostCard key={p.slug} post={p} />)}
+        </div>
+        <div className="mt-8">
+          <Button variant="ghost" href="/announcements">All announcements</Button>
+        </div>
+      </Container>
+    </Section>
+  );
+}
 
 export default function Home() {
   return (
@@ -33,6 +56,7 @@ export default function Home() {
       <Industries />
       <TheLoop />
       <GlobalGlobe />
+      <LatestStrip />
       <Section variant="paper" id="quote">
         <Container className="py-[var(--section-padding)] flex justify-center">
           <Reveal>
