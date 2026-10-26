@@ -130,6 +130,7 @@ export function IndustryPage({ content }: { content: IndustryContent }) {
                   }
                   width={600}
                   height={400}
+                  sizes="(max-width: 768px) 100vw, 600px"
                   scrim="bottom"
                   grain
                   className="rounded-[var(--radius-8)]"

@@ -16,6 +16,7 @@ export type MediaFrameProps = {
   grain?: boolean;
   parallax?: boolean;
   className?: string;
+  sizes?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 };
@@ -33,6 +34,7 @@ export function MediaFrame({
   grain = false,
   parallax = false,
   className,
+  sizes = "(max-width: 768px) 100vw, 50vw",
   style,
   children,
 }: MediaFrameProps) {
@@ -74,7 +76,7 @@ export function MediaFrame({
         height={height}
         priority={priority}
         fill={fill}
-        sizes="100vw"
+        sizes={sizes}
         className={`object-[${objectPosition}] object-[${objectFit}] block w-full h-full`}
         style={imgStyle}
       />

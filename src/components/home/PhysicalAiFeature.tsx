@@ -47,7 +47,7 @@ export function PhysicalAiFeature() {
           alt=""
           aria-hidden="true"
           fill
-          sizes="60vw"
+          sizes="(max-width: 768px) 60vw, 60vw"
           className="object-contain"
           style={{
             maskImage:

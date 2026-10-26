@@ -43,6 +43,7 @@ export function ControlPlaneFeature() {
               src={ASSETS.controlTerminal}
               alt="Engineer working at a keyboard in front of a dense terminal display"
               fill
+              sizes="(max-width: 768px) 100vw, 58vw"
               className="aspect-[16/10] rounded-[var(--radius-8)] overflow-hidden duotone-blue"
               parallax={false}
             />

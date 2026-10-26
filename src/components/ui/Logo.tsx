@@ -24,7 +24,8 @@ export function Logo({ variant = "mark", className, width, height, style }: Logo
         alt="Cortera logo: a robot inside a cave-shaped dome"
         width={width ?? 120}
         height={height ?? 120}
-        priority={width !== undefined ? width <= 48 : false}
+        priority={false}
+        sizes="(max-width: 768px) 32px, 120px"
         className={`mix-blend-screen ${className ?? ""}`}
         style={{
           filter: "brightness(1.1) contrast(1.2)",
@@ -36,11 +37,13 @@ export function Logo({ variant = "mark", className, width, height, style }: Logo
   return (
     <Image
       src={LOCKUP_SRC}
-      alt="Cortera: Physical AI for Mining &amp; Agriculture"
+      alt="Cortera: Physical AI for Mining & Agriculture"
       width={width ?? 240}
       height={height ?? 120}
+      priority={false}
+      sizes="(max-width: 768px) 50vw, 240px"
       className={className ?? ""}
-      style={style}
+      style={{ minHeight: height ?? 120, ...style }}
     />
   );
 }
