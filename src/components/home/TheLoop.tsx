@@ -9,11 +9,15 @@ import { Lede } from "@/components/ui/Lede";
 import { Container } from "@/components/ui/Container";
 
 const NODES = [
-  { label: "Build", sub: "Agents and robots" },
-  { label: "Deploy", sub: "In the real world" },
-  { label: "Observe", sub: "Permissions, monitoring, cost" },
-  { label: "Improve", sub: "Failure analysis and review" },
+  { label: "Build", sub: ["Agents", "and robots"] },
+  { label: "Deploy", sub: ["In the real", "world"] },
+  { label: "Observe", sub: ["Permissions,", "monitoring, cost"] },
+  { label: "Improve", sub: ["Failure analysis", "and review"] },
 ];
+
+const R = 150;
+const CENTER = { x: 400, y: 200 };
+const LABEL_OFFSET = R + 6 + 12;
 
 export function TheLoop() {
   const ref = useRef<SVGSVGElement>(null);
@@ -31,13 +35,18 @@ export function TheLoop() {
           Because we build both halves, every machine ships with the oversight it needs, and every failure teaches the control plane something new.
         </Lede>
 
-        {/* Desktop loop */}
-        <div className="mt-16 hidden md:block">
-          <svg ref={ref} viewBox="0 0 800 400" className="w-full max-w-[800px] mx-auto" aria-hidden="true">
+        <div className="mt-16 flex justify-center">
+          <svg
+            ref={ref}
+            viewBox="-120 0 1040 460"
+            className="w-full max-w-[420px] h-auto mx-auto overflow-visible"
+            aria-hidden="true"
+            style={{ overflow: "visible" }}
+          >
             <m.circle
-              cx="400"
-              cy="200"
-              r="150"
+              cx={CENTER.x}
+              cy={CENTER.y}
+              r={R}
               fill="none"
               stroke="var(--ink)"
               strokeWidth="1.5"
@@ -47,33 +56,64 @@ export function TheLoop() {
             />
             {NODES.map((n, i) => {
               const angle = (i / NODES.length) * Math.PI * 2 - Math.PI / 2;
-              const x = 400 + 150 * Math.cos(angle);
-              const y = 200 + 150 * Math.sin(angle);
+              const ux = Math.cos(angle);
+              const uy = Math.sin(angle);
+              const nx = CENTER.x + R * ux;
+              const ny = CENTER.y + R * uy;
+              const lx = CENTER.x + LABEL_OFFSET * ux;
+              const ly = CENTER.y + LABEL_OFFSET * uy;
+              const anchor =
+                i === 0 ? "middle" : i === 1 ? "start" : i === 2 ? "middle" : "end";
               return (
                 <g key={n.label}>
-                  <circle cx={x} cy={y} r="6" fill="var(--ink)" />
-                  <text x={x} y={y + (i < 2 ? -24 : 36)} textAnchor="middle" className="font-sans" style={{ fontSize: 16, fontWeight: 600, fill: "var(--ink)" }}>
+                  <circle cx={nx} cy={ny} r="6" fill="var(--ink)" />
+                  <text
+                    x={lx}
+                    y={ly}
+                    textAnchor={anchor}
+                    dominantBaseline="middle"
+                    className="font-sans"
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 600,
+                      fill: "var(--ink)",
+                      paintOrder: "stroke",
+                      stroke: "var(--paper)",
+                      strokeWidth: 6,
+                      strokeLinejoin: "round",
+                    }}
+                  >
                     {n.label}
                   </text>
-                  <text x={x} y={y + (i < 2 ? -6 : 54)} textAnchor="middle" style={{ fontSize: 11, fontFamily: "var(--font-geist-mono)", fill: "var(--ink)", opacity: 0.7 }}>
-                    {n.sub}
+                  <text
+                    x={lx}
+                    y={i === 2 ? ly - 28 : ly + 16}
+                    textAnchor={anchor}
+                    className="font-sans"
+                    style={{
+                      fontSize: 11,
+                      fill: "var(--ink)",
+                      opacity: 0.85,
+                      paintOrder: "stroke",
+                      stroke: "var(--paper)",
+                      strokeWidth: 6,
+                      strokeLinejoin: "round",
+                    }}
+                  >
+                    {n.sub.map((line, idx) => (
+                      <tspan
+                        key={idx}
+                        x={lx}
+                        dy={idx === 0 ? 0 : 13}
+                      >
+                        {line}
+                      </tspan>
+                    ))}
                   </text>
                 </g>
               );
             })}
           </svg>
-        </div>
-
-        {/* Mobile vertical */}
-        <div className="mt-12 md:hidden flex flex-col items-center gap-6">
-          {NODES.map((n, i) => (
-            <div key={n.label} className="flex flex-col items-center">
-              <div className="w-3 h-3 rounded-full bg-ink" />
-              <p className="mt-2 font-sans font-semibold text-ink">{n.label}</p>
-              <p className="font-mono text-[11px] text-ink/70">{n.sub}</p>
-              {i < NODES.length - 1 && <div className="w-px h-8 bg-ink/30 mt-2" />}
-            </div>
-          ))}
         </div>
       </Container>
     </Section>

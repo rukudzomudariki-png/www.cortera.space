@@ -44,7 +44,7 @@ export function Reveal({ children, className, once = true, delay = 0 }: RevealPr
     return () => observer.disconnect();
   }, [once]);
 
-  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-m: reduce)").matches;
+  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) {
     return (
       <div ref={ref} className={className ?? ""}>
