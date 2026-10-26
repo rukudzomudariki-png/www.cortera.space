@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { m, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Container } from "@/components/ui/Container";
@@ -14,9 +14,9 @@ function Word({ word, progress, index, total }: { word: string; progress: Return
   const end = (index + 1) / total;
   const opacity = useTransform(progress, [start * 0.6, Math.min(1, end * 0.6 + 0.2)], [0.25, 1]);
   return (
-    <motion.span style={{ opacity }} className="inline-block mr-[0.25em]">
+    <m.span style={{ opacity }} className="inline-block mr-[0.25em]">
       {word}
-    </motion.span>
+    </m.span>
   );
 }
 

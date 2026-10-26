@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, type Easing, type Variants } from "framer-motion";
+import { m, type Easing, type Variants } from "framer-motion";
 
 export type RevealProps = {
   children: React.ReactNode;
@@ -44,7 +44,7 @@ export function Reveal({ children, className, once = true, delay = 0 }: RevealPr
     return () => observer.disconnect();
   }, [once]);
 
-  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-m: reduce)").matches;
   if (reduced) {
     return (
       <div ref={ref} className={className ?? ""}>
@@ -53,7 +53,7 @@ export function Reveal({ children, className, once = true, delay = 0 }: RevealPr
     );
   }
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={!visible ? "hidden" : "visible"}
       animate={visible ? "visible" : "hidden"}
@@ -63,6 +63,6 @@ export function Reveal({ children, className, once = true, delay = 0 }: RevealPr
       className={className ?? ""}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
