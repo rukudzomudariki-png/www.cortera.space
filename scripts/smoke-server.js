@@ -20,4 +20,3 @@ const interval = setInterval(async () => {
   try { await check(); clearInterval(interval); console.log("smoke: OK"); proc.kill(); process.exit(0); }
   catch (e) { if (attempts > 30) { clearInterval(interval); console.error("smoke FAILED:", e.message); proc.kill(); process.exit(1); } }
 }, 1000);
-EOF

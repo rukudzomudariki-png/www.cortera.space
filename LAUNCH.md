@@ -52,4 +52,3 @@ Enable Vercel Deployment Protection for Preview deployments (Vercel Authenticati
 - Hacker News and social URLs
 - Security contact email decision
 - Confirmation of package name and install command in first announcement
-EOF

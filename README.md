@@ -30,4 +30,3 @@ Add an MDX file under `content/announcements/`. See existing entries for frontma
 ## Deployment
 
 See LAUNCH.md.
-EOF

@@ -9,4 +9,3 @@
     { "source": "/:path*", "has": [{ "type": "host", "value": "cortera.space" }], "destination": "https://www.cortera.space/:path*", "permanent": true }
   ]
 }
-EOF
