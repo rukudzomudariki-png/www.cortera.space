@@ -45,6 +45,7 @@ function LatestStrip() {
 }
 
 export default function Home() {
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.cortera.space").replace(/\/$/, "");
   return (
     <>
       <Hero />
@@ -80,6 +81,16 @@ export default function Home() {
           </div>
         </Container>
       </Section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            { "@type": "Organization", name: "Cortera", url: siteUrl, logo: siteUrl + "/assets/logo-mark-dark.png", email: "team@cortera.space" },
+            { "@type": "WebSite", name: "Cortera", url: siteUrl }
+          ]
+        }) }}
+      />
     </>
   );
 }

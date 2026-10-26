@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { MediaFrame } from "@/components/ui/MediaFrame";
@@ -230,7 +230,7 @@ export function Nav() {
 
         <AnimatePresence>
           {megaOpen ? (
-            <motion.div
+            <m.div
               ref={megaRef}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -261,7 +261,7 @@ export function Nav() {
                 </div>
                 <div className="relative h-[280px] overflow-hidden">
                   <AnimatePresence mode="wait">
-                    <motion.div
+                    <m.div
                       key={hovered}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -275,18 +275,18 @@ export function Nav() {
                         fill
                         className="h-full w-full"
                       />
-                    </motion.div>
+                    </m.div>
                   </AnimatePresence>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           ) : null}
         </AnimatePresence>
       </nav>
 
       <AnimatePresence>
         {open ? (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -302,7 +302,7 @@ export function Nav() {
                 { label: "News", href: "/announcements" },
                 { label: "Company", href: "/company" },
               ].map((l, i) => (
-                <motion.div
+                <m.div
                   key={l.href}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -315,9 +315,9 @@ export function Nav() {
                   >
                     {l.label}
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 5 * 0.08, duration: 0.4 }}
@@ -336,14 +336,14 @@ export function Nav() {
                     </Link>
                   </div>
                 </details>
-              </motion.div>
+              </m.div>
             </div>
             <div className="mt-auto pt-8">
               <Button variant="primary" size="lg" href="/contact" className="w-full">
                 Request a demo
               </Button>
             </div>
-          </motion.div>
+          </m.div>
         ) : null}
       </AnimatePresence>
     </>

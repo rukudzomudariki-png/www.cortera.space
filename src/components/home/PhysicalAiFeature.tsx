@@ -8,7 +8,7 @@ import { Lede } from "@/components/ui/Lede";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export function PhysicalAiFeature() {
   return (
@@ -36,7 +36,7 @@ export function PhysicalAiFeature() {
         style={{ mixBlendMode: "screen", filter: "brightness(1.1) contrast(1.2)" }}
         aria-hidden="true"
       >
-        <motion.div
+        <m.div
           className="absolute inset-0"
           style={{ background: "radial-gradient(circle at center, #3B82F6, transparent 70%)" }}
           animate={{ opacity: [0.07, 0.12, 0.07] }}

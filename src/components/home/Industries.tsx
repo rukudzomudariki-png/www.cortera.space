@@ -9,7 +9,7 @@ import { Container } from "@/components/ui/Container";
 import { MediaFrame } from "@/components/ui/MediaFrame";
 import { ContourBackdrop } from "@/components/ui/ContourBackdrop";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export function Industries() {
   return (
@@ -24,7 +24,7 @@ export function Industries() {
             href="/industries/mining"
             className="group relative block aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-[var(--radius-8)] border border-line focus-visible:ring-2 focus-visible:ring-focus-ring"
           >
-            <motion.div className="absolute inset-0" whileHover={{ scale: 1.03 }} transition={{ duration: 0.6 }}>
+            <m.div className="absolute inset-0" whileHover={{ scale: 1.03 }} transition={{ duration: 0.6 }}>
               <MediaFrame
                 src={ASSETS.heroMine}
                 alt="Haul trucks driving through an underground mine tunnel"
@@ -34,7 +34,7 @@ export function Industries() {
                 grain
                 className="absolute inset-0"
               />
-            </motion.div>
+            </m.div>
             <div className="absolute bottom-0 left-0 p-8 z-10">
               <h2 className="text-[var(--font-size-h2)] font-semibold tracking-[var(--letter-spacing-tight)] text-text">Mining</h2>
               <p className="text-[var(--font-size-body)] text-muted mt-2 max-w-[30ch]">Autonomy for extraction, hauling and the hazards of working underground.</p>

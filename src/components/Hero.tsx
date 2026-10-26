@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Lede } from "@/components/ui/Lede";
 import { Button } from "@/components/ui/Button";
@@ -93,7 +93,7 @@ export function Hero() {
           style={imgStyle}
         />
         {/* Radial glow on the robot's lamps, slow pulse */}
-        <motion.div
+        <m.div
           className="hidden lg:block pointer-events-none"
           style={{
             position: "absolute",
@@ -130,7 +130,7 @@ export function Hero() {
             <div className="grid grid-cols-12 lg:grid-cols-12">
               <div className="lg:col-span-7">
                 {/* Eyebrow with preceding 24px gradient hairline */}
-                <motion.div
+                <m.div
                   initial={hidden}
                   animate={visible}
                   transition={{ duration: 0.5, delay: reduced ? 0 : 0.15 }}
@@ -138,10 +138,10 @@ export function Hero() {
                 >
                   <GradientHairline className="w-[24px] h-[1px] mb-2" />
                   <Eyebrow>{EYEBROW}</Eyebrow>
-                </motion.div>
+                </m.div>
 
                 {/* Headline: word-by-word reveal, "physical" in Instrument Serif italic */}
-                <motion.h1
+                <m.h1
                   initial={hidden}
                   animate={visible}
                   transition={{ duration: 0.4, delay: reduced ? 0 : 0.35 }}
@@ -150,7 +150,7 @@ export function Hero() {
                   {WORDS.map((word, i) => {
                     const isAccent = word === ACCENT;
                     return (
-                      <motion.span
+                      <m.span
                         key={i}
                         className="inline-block"
                         initial={hidden}
@@ -163,13 +163,13 @@ export function Hero() {
                           word
                         )}
                         {i < WORDS.length - 1 && " "}
-                      </motion.span>
+                      </m.span>
                     );
                   })}
-                </motion.h1>
+                </m.h1>
 
                 {/* Lede */}
-                <motion.p
+                <m.p
                   initial={hidden}
                   animate={visible}
                   transition={{ duration: 0.5, delay: reduced ? 0 : 0.85 }}
@@ -178,10 +178,10 @@ export function Hero() {
                   <Lede className="text-[19px]" maxWidth="56ch">
                     {LEDE}
                   </Lede>
-                </motion.p>
+                </m.p>
 
                 {/* Buttons */}
-                <motion.div
+                <m.div
                   initial={hidden}
                   animate={visible}
                   transition={{ duration: 0.5, delay: reduced ? 0 : 1.0 }}
@@ -195,7 +195,7 @@ export function Hero() {
                       Explore Physical AI
                     </Button>
                   </div>
-                </motion.div>
+                </m.div>
               </div>
             </div>
           </Container>
@@ -212,7 +212,7 @@ export function Hero() {
               aria-hidden
             />
             {!reduced && (
-              <motion.div
+              <m.div
                 className="absolute left-1/2 -translate-x-1/2 top-0"
                 style={{
                   width: 6,

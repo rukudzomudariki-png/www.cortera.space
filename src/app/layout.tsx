@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { LazyMotion, domAnimation } from "framer-motion";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/layout/Footer";
@@ -41,13 +42,13 @@ export const metadata: Metadata = {
   description:
     "Cortera builds frontier Physical AI robotics for mining and agriculture, and the control plane that keeps cloud and physical agents safe, observable and under human oversight.",
   openGraph: {
-    images: [{ url: "/assets/og-twitter.jpg", width: 2400, height: 1200, alt: "Cortera hero" }],
+    images: [{ url: "/assets/og-twitter.jpg", width: 1200, height: 630, alt: "Cortera" }],
   },
   twitter: {
     card: "summary_large_image",
     images: ["/assets/og-twitter.jpg"],
   },
-  icons: { icon: "/favicon.ico" },
+  icons: { icon: "/favicon.ico", apple: "/assets/logo-mark-dark.png" },
 };
 
 export default function RootLayout({
@@ -65,9 +66,11 @@ export default function RootLayout({
         <ScrollProgress />
         <Nav />
         <ScrollToTop />
+<LazyMotion features={domAnimation} strict>
         <main id="content" className="flex-1">
           <PageTransition>{children}</PageTransition>
         </main>
+        </LazyMotion>
         <Footer hasBlogPosts={hasBlogPosts()} />
       </body>
     </html>

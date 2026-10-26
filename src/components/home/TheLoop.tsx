@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { m, useInView, useReducedMotion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Display } from "@/components/ui/Display";
@@ -34,7 +34,7 @@ export function TheLoop() {
         {/* Desktop loop */}
         <div className="mt-16 hidden md:block">
           <svg ref={ref} viewBox="0 0 800 400" className="w-full max-w-[800px] mx-auto" aria-hidden="true">
-            <motion.circle
+            <m.circle
               cx="400"
               cy="200"
               r="150"
