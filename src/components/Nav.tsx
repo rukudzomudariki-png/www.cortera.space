@@ -44,7 +44,6 @@ const CENTER_LINKS = [
 
 export function Nav() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
@@ -57,7 +56,6 @@ export function Nav() {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      setScrolled(y > 24);
       if (window.innerWidth >= 1024) {
         if (y > window.innerHeight && y > lastY.current) setHidden(true);
         else setHidden(false);
@@ -138,11 +136,14 @@ export function Nav() {
         ref={navRef}
         className={`fixed inset-x-0 top-0 z-[60] transition-all duration-[250ms] ${
           hidden ? "-translate-y-full" : "translate-y-0"
-        } ${
-          scrolled
-            ? "bg-bg/72 backdrop-blur-md border-b border-line"
-            : "bg-transparent border-b border-transparent"
         }`}
+        style={{
+          backgroundColor: "rgba(10,10,11,0.88)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: "1px solid rgba(255,255,255,0.10)",
+          paddingTop: "env(safe-area-inset-top)",
+        }}
       >
         <div className="flex items-center justify-between gap-4 px-[var(--side-padding)] h-16 lg:h-[72px]">
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
@@ -218,7 +219,7 @@ export function Nav() {
               Request a demo
             </Button>
             <button
-              className="lg:hidden rounded-full p-2 text-text hover:bg-surface transition-colors"
+              className="lg:hidden rounded-full p-2 text-text hover:bg-surface transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setOpen((v) => !v)}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}

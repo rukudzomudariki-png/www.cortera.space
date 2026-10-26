@@ -99,8 +99,11 @@ a { color: inherit; text-decoration: none; }
 /* Skip link */
 .skip-link {
   position: absolute;
-  left: calc(var(--side-padding) * -1);
-  top: var(--side-padding);
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
   z-index: 100;
   display: block;
   padding: 8px 16px;
@@ -113,11 +116,13 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: var(--letter-spacing-wide);
   border-radius: var(--radius-8);
   border: 1px solid var(--paper-line);
-  transform: translatey(calc(-100% - 8px));
-  transition: transform 0.2s ease;
 }
 .skip-link:focus-visible {
-  transform: translatey(0);
+  left: 8px;
+  top: 8px;
+  width: auto;
+  height: auto;
+  overflow: visible;
   outline: 2px solid var(--focus-ring);
   outline-offset: 2px;
 }
