@@ -1,14 +1,9 @@
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
+import { SITE_URL, IS_PRODUCTION } from "@/config/site";
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
-  const h = await headers();
-  const host = h.get("host") || "";
-  const siteHost = new URL(siteUrl).host;
-  const isProd = host === siteHost;
-  if (!isProd) {
+export default function robots(): MetadataRoute.Robots {
+  if (!IS_PRODUCTION) {
     return { rules: { userAgent: "*", disallow: "/" } };
   }
-  return { rules: { userAgent: "*", allow: "/" }, sitemap: `${siteUrl}/sitemap.xml` };
+  return { rules: { userAgent: "*", allow: "/" }, sitemap: `${SITE_URL}/sitemap.xml` };
 }

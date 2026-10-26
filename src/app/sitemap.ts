@@ -1,7 +1,8 @@
 import { getAllPosts } from "@/lib/content";
+import { SITE_URL } from "@/config/site";
 import type { MetadataRoute } from "next";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+const siteUrl = SITE_URL;
 const buildTime = new Date();
 
 const staticRoutes: { path: string; lastModified?: Date }[] = [

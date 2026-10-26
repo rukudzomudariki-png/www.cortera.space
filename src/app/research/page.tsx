@@ -15,8 +15,9 @@ import { Thesis } from "@/components/research/Thesis";
 export const metadata: Metadata = {
   title: "Research",
   description:
-    "Cortera researches how to make autonomous agents safe to run: containing them when they go wrong, understanding why, and keeping them efficient. Cortera Framework, CorMCP and Teralis.",
+    "Cortera researches how to make autonomous agents safe to run: containing them when they go wrong, understanding why, and keeping them efficient.",
   openGraph: { images: [{ url: ASSETS.controlTerminal }] },
+  alternates: { canonical: "/research" },
 };
 
 const SchematicFramework = (

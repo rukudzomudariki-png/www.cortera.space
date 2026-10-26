@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy for the Cortera website.",
   openGraph: { images: [{ url: ASSETS.heroRobot }] },
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
