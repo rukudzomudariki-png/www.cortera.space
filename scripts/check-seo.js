@@ -1,7 +1,8 @@
 /* eslint-disable */
 const BASE = process.env.BASE_URL || "http://localhost:3000";
 const routes = ["/","/physical-ai","/control-plane","/industries","/industries/mining","/industries/agriculture","/safety","/research","/company","/contact","/privacy","/terms","/announcements","/blog"];
-const { getAllPosts } = require("../src/lib/content") || {};
+let getAllPosts;
+try { getAllPosts = require("../src/lib/content").getAllPosts; } catch(e) { getAllPosts = undefined; }
 let allRoutes = [...routes];
 try {
   const c = require("../src/lib/content");

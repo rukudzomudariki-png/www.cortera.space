@@ -36,7 +36,8 @@ src/
 - No component libraries; primitives hand-written in `src/components/ui`.
 - Deployable to Vercel; no backend in this stage.
 
-## Verification commands
+## CSP tradeoff (site-11)
+CSP is set statically (no per-request nonce) so all routes stay statically generated and CDN-cacheable. `script-src` uses `'unsafe-inline'` because Next.js static pages ship inline bootstrap scripts; all third-party origins remain blocked. `CSP_MODE` in `src/config/security.ts` defaults to "report-only" for preview verification before enforcement.
 - `tsc` (via `next build`)
 - `npm run lint` (eslint)
 - `npm run build` (next build)

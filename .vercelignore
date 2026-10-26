@@ -1,0 +1,10 @@
+node_modules
+.next
+tests
+coverage
+*.md
+!README.md
+.env*
+.vercel
+test-results
+EOF

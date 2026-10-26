@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description:
     "Cortera builds Physical AI for mining and agriculture and the control plane that keeps autonomous agents safe, observable and under human oversight.",
   openGraph: { images: [{ url: ASSETS.heroRobot }] },
+  alternates: { canonical: "/company" },
 };
 
 export default function CompanyPage() {

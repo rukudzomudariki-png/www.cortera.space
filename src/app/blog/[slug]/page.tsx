@@ -13,6 +13,7 @@ import { CoverArt } from "@/components/news/CoverArt";
 import { PostCard } from "@/components/news/PostCard";
 import { mdxComponentsServer as mdxComponents } from "@/components/mdx/MDXComponentsServer";
 import { getAllPosts, getPost, getHeadings, formatDate, dateToIso } from "@/lib/content";
+import { SITE_URL } from "@/config/site";
 
 
 export function generateStaticParams() {
@@ -46,8 +47,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const headings = getHeadings(post.content);
   const toc = headings.filter((h) => h.level === 2);
   const others = getAllPosts("blog").filter((p) => p.slug !== slug).slice(0, 2);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const articleUrl = `${siteUrl}/blog/${slug}`;
+  const articleUrl = `${SITE_URL}/blog/${slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",

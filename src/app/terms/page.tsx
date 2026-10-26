@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of Service for the Cortera website.",
   openGraph: { images: [{ url: ASSETS.heroRobot }] },
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

@@ -1,15 +1,23 @@
 {
-  "name": "app",
+  "name": "cortera",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
+  "packageManager": "npm@11.19.1",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run check:no-forms && next build",
+    "build": "npm run check:no-forms && npm run check:claims && npm run check:env && next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
     "check:no-forms": "node scripts/check-no-forms.js",
     "check:claims": "node scripts/check-claims.js",
-    "check:seo": "node scripts/check-seo.js"
+    "check:env": "node scripts/check-env.js",
+    "check:seo": "node scripts/check-seo.js",
+    "verify:deploy": "npm run lint && npm run typecheck && npm run test && npm run check:no-forms && npm run check:claims && npm run check:env && npm run build && node scripts/verify-runtime.js"
   },
   "dependencies": {
     "framer-motion": "14.6.0",

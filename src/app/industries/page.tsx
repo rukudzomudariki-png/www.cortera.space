@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = {
   title: "Industries",
   description: "Cortera builds Physical AI for mining and agriculture.",
+  alternates: { canonical: "/industries" },
 };
 
 export default function Page() {

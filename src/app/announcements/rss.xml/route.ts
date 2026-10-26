@@ -1,9 +1,12 @@
+export const dynamic = "force-static";
+
 import { getAllPosts, dateToPubDate } from "@/lib/content";
+import { SITE_URL } from "@/config/site";
 
 
 export function GET() {
   const posts = getAllPosts("announcements");
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = SITE_URL;
   const items = posts
     .map((p) => {
       const url = `${siteUrl}/announcements/${p.slug}`;

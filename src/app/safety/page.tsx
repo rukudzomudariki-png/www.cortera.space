@@ -13,8 +13,9 @@ import { StickySequence } from "@/components/ui/StickySequence";
 export const metadata: Metadata = {
   title: "Safety",
   description:
-    "How Cortera designs autonomous systems to stay inside their limits: defined boundaries, human oversight, containment and complete records, for robots and agents alike.",
+    "How Cortera designs autonomous systems to stay inside their limits: defined boundaries, human oversight, containment and complete records.",
   openGraph: { images: [{ url: ASSETS.heroMine }] },
+  alternates: { canonical: "/safety" },
 };
 
 const steps = [

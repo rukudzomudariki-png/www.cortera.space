@@ -19,10 +19,12 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Display } from "@/components/ui/Display";
 import { PostCard } from "@/components/news/PostCard";
 import { getAllPosts } from "@/lib/content";
+import { SITE_URL } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Cortera — Physical AI for Mining & Agriculture",
-  description: "Cortera builds intelligent robotic systems for mining and agriculture, and the control plane that keeps every agent, in the cloud or on the ground, safe, observable and under human oversight.",
+  description: "Cortera builds intelligent robotic systems for mining and agriculture, and the control plane that keeps every agent safe, observable and under human oversight.",
+  alternates: { canonical: "/" },
 };
 
 function LatestStrip() {
@@ -45,7 +47,6 @@ function LatestStrip() {
 }
 
 export default function Home() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.cortera.space").replace(/\/$/, "");
   return (
     <>
       <Hero />
@@ -86,8 +87,8 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [
-            { "@type": "Organization", name: "Cortera", url: siteUrl, logo: siteUrl + "/assets/logo-mark-dark.png", email: "team@cortera.space" },
-            { "@type": "WebSite", name: "Cortera", url: siteUrl }
+            { "@type": "Organization", name: "Cortera", url: SITE_URL, logo: SITE_URL + "/assets/logo-mark-dark.png", email: "team@cortera.space" },
+            { "@type": "WebSite", name: "Cortera", url: SITE_URL }
           ]
         }) }}
       />
