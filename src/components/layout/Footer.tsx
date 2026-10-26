@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/ui/Logo";
@@ -40,10 +39,8 @@ const columns = [
   },
 ];
 
-export function Footer({ hasBlogPosts = false }: { hasBlogPosts?: boolean }) {
-  const [year, setYear] = useState<number | null>(null);
+export function Footer({ hasBlogPosts = false, year = new Date().getFullYear() }: { hasBlogPosts?: boolean; year?: number }) {
   const footerColumns = columns.map((c) => c.heading === "Company" ? { ...c, links: [...c.links.slice(0,4), ...(hasBlogPosts ? [{ label: "Blog", href: "/blog" }] : []), c.links[4]] } : c);
-  useEffect(() => { const t = setTimeout(() => setYear(new Date().getFullYear()), 0); return () => clearTimeout(t); }, []);
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_URL;
   const x = process.env.NEXT_PUBLIC_X_URL;
   const github = process.env.NEXT_PUBLIC_GITHUB_URL;
@@ -67,12 +64,8 @@ export function Footer({ hasBlogPosts = false }: { hasBlogPosts?: boolean }) {
 
         <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="flex flex-col gap-4">
-            <Logo
-              variant="lockup"
-              width={160}
-              height={80}
-              style={{ filter: "invert(1)", mixBlendMode: "screen" }}
-            />
+            <Logo variant="mark" width={32} height={32} />
+            <span className="font-sans font-semibold tracking-[0.28em] text-text">CORTERA</span>
             <p className="font-sans font-semibold text-text">Physical AI for Mining &amp; Agriculture</p>
             <p className="text-muted max-w-[40ch]">
               Frontier Physical and cloud AI, with the controls to run it safely.

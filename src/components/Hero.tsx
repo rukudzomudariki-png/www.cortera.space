@@ -128,7 +128,7 @@ export function Hero() {
         <div className="px-6 lg:px-0 lg:max-w-[var(--container-max)] lg:mx-auto">
           <Container full>
             <div className="grid grid-cols-12 lg:grid-cols-12">
-              <div className="lg:col-span-7">
+              <div className="col-span-12 lg:col-span-7">
                 {/* Eyebrow with preceding 24px gradient hairline */}
                 <m.div
                   initial={hidden}

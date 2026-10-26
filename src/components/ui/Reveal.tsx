@@ -24,7 +24,7 @@ const revealVariants: Variants = {
 
 export function Reveal({ children, className, once = true, delay = 0 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
@@ -44,7 +44,7 @@ export function Reveal({ children, className, once = true, delay = 0 }: RevealPr
     return () => observer.disconnect();
   }, [once]);
 
-  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-m: reduce)").matches;
+  const reduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) {
     return (
       <div ref={ref} className={className ?? ""}>
@@ -59,7 +59,6 @@ export function Reveal({ children, className, once = true, delay = 0 }: RevealPr
       animate={visible ? "visible" : "hidden"}
       variants={revealVariants}
       transition={{ delay }}
-      style={{ visibility: visible || reduced ? undefined : "hidden" }}
       className={className ?? ""}
     >
       {children}

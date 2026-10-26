@@ -6,7 +6,7 @@ export const ASSETS = {
   heroRobot: HERO_IMAGE,
   heroMine: "/assets/hero-mine.jpg",
   logoMarkDark: "/assets/logo-mark-dark.png",
-  logoLockupLight: "/assets/logo-lockup-light.png",
+  logoLockupLight: "/assets/logo-mark-dark.png",
   controlTerminal: "/assets/control-terminal.jpg",
   ogTwitter: "/assets/og-twitter.jpg",
 } as const;

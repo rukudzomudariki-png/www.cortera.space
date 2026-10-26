@@ -26,8 +26,8 @@ export function TwoPillars() {
     <Section variant="dark" id="platform">
       <Container className="py-[var(--section-padding)]">
         <Eyebrow>ONE COMPANY, TWO HALVES</Eyebrow>
-        <Display level={2} accent="Govern" className="mt-4">
-          Build the agents. Govern them.
+        <Display level={2} className="mt-4">
+          Build the agents. *Govern* them.
         </Display>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-0 md:divide-x md:divide-line">
           {PILLARS.map((p) => (

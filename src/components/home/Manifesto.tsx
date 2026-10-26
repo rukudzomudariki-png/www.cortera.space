@@ -14,9 +14,7 @@ function Word({ word, progress, index, total }: { word: string; progress: Return
   const end = (index + 1) / total;
   const opacity = useTransform(progress, [start * 0.6, Math.min(1, end * 0.6 + 0.2)], [0.25, 1]);
   return (
-    <m.span style={{ opacity }} className="inline-block mr-[0.25em]">
-      {word}
-    </m.span>
+    <m.span style={{ opacity }} className="inline-block" aria-hidden="true">{word} </m.span>
   );
 }
 
@@ -32,6 +30,7 @@ export function Manifesto() {
         <p
           ref={ref as unknown as React.RefObject<HTMLParagraphElement>}
           className="mt-6 font-sans font-medium text-[clamp(28px,4.5vw,56px)] leading-[1.05] tracking-[-0.02em] max-w-[22ch]"
+          aria-label={TEXT}
         >
           {reduced
             ? TEXT

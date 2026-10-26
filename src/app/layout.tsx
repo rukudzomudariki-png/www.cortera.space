@@ -70,7 +70,7 @@ export default function RootLayout({
           <PageTransition>{children}</PageTransition>
         </main>
         </LazyMotion>
-        <Footer hasBlogPosts={hasBlogPosts()} />
+        <Footer hasBlogPosts={hasBlogPosts()} year={new Date().getFullYear()} />
       </body>
     </html>
   );
